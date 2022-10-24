@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "teams",
+  "info": {
+    "singularName": "team",
+    "pluralName": "teams",
+    "displayName": "team"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "teamName": {
+      "type": "string"
+    },
+    "teamLogo": {
+      "type": "string"
+    }
+  }
+}

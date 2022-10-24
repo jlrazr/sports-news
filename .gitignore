@@ -1,0 +1,31 @@
+.DS_Store
+node_modules
+/dist
+/public
+coverage/
+
+pgd-sports-news-cms/.DS_Store
+pgd-sports-news-cms/node_modules
+pgd-sports-news-cms/dist
+pgd-sports-news-cms/coverage/
+pgd-sports-news-cms/.gitignore
+pgd-sports-news-cms/.git
+
+# local env files
+.env.local
+.env.*.local
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

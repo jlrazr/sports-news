@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= htmlWebpackPlugin.options.title %></title>
+  </head>
+  <body>
+    <header-component></header-component>
+    <section class="featured-news">
+      <h2 class="featured-news__title">Featured News</h2>
+      <div class="featured-news__news-container">
+        <article class="featured-news__article-tile">
+          <img
+            src="https://neospor.joomlatema.net/cache/mod_bt_contentslider/7ee550daeb5f02450367dc26e539b152-1-intro.jpg"
+            alt=""
+          />
+          <div class="featured-news__article-info">
+            <h3>Featured News</h3>
+            <h2>The Other Side To The Draw With Cadiz</h2>
+            <h4>Super User</h4>
+            <h4>11 June 2020</h4>
+            <p>Consectetuer adipiscing elit sed diam nonummy</p>
+            nibh euismod tincid...
+            <button>Read More</button>
+          </div>
+        </article>
+        <article class="featured-news__article-tile">
+          <img
+            src="https://neospor.joomlatema.net/cache/mod_bt_contentslider/bdf104d96c2efd2569f5571cec18f265-2-intro.jpg"
+            alt=""
+          />
+          <div class="featured-news__article-info">
+            <h3>Featured News</h3>
+            <h2>Final Episode of The Series Available</h2>
+            <h4>Super User</h4>
+            <h4>11 June 2021</h4>
+            <p>
+              Consectetuer adipiscing elit sed diam nonummy nibh euismod
+              tincid...
+              <button>Read More</button>
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
+    <section class="featured-videos">
+      <h2 class="featured-videos__title">Featured Videos</h2>
+      <div class="featured-videos__videos-container">
+        <article class="featured-videos__article-tile">
+          <img
+            src="https://neospor.joomlatema.net/cache/mod_bt_contentslider/91b24fd2cc26ef085997c69628eee929-4-intro.jpg"
+            alt=""
+          />
+          <div class="featured-videos__article-info">
+            <h2>Impossible Goals in Football 2021</h2>
+            <p>
+              Amazing Skills and Goals by The best Players. Tottenham fans: can
+              we have a trophy for the best...
+            </p>
+            nibh euismod tincid...
+            <p>51 Views</p>
+          </div>
+        </article>
+        <article class="featured-videos__article-tile">
+          <img
+            src="https://neospor.joomlatema.net/cache/mod_bt_contentslider/4849d808e6d30b065563640eafa7ef0a-6-intro.jpg"
+            alt=""
+          />
+          <div class="featured-videos__article-info">
+            <h2>Impossible Goals in Football 2021</h2>
+            <p>
+              Amazing Skills and Goals by The best Players. Tottenham fans: can
+              we have a trophy for the best...
+            </p>
+            nibh euismod tincid...
+            <p>51 Views</p>
+          </div>
+        </article>
+        <article class="featured-videos__article-tile">
+          <img
+            src="https://neospor.joomlatema.net/cache/mod_bt_contentslider/a8b5546936d6ea062498ebb3bad0e1e6-8-intro.jpg"
+            alt=""
+          />
+          <div class="featured-videos__article-info">
+            <h2>Impossible Goals in Football 2021</h2>
+            <p>
+              Amazing Skills and Goals by The best Players. Tottenham fans: can
+              we have a trophy for the best...
+            </p>
+            nibh euismod tincid...
+            <p>51 Views</p>
+          </div>
+        </article>
+        <article class="featured-videos__article-tile">
+          <img
+            src="https://neospor.joomlatema.net/cache/mod_bt_contentslider/10875815390a23c430e9246af1ab714a-12-intro.jpg"
+            alt=""
+          />
+          <div class="featured-videos__article-info">
+            <h2>Impossible Goals in Football 2021</h2>
+            <p>
+              Amazing Skills and Goals by The best Players. Tottenham fans: can
+              we have a trophy for the best...
+            </p>
+            nibh euismod tincid...
+            <p>51 Views</p>
+          </div>
+        </article>
+      </div>
+    </section>
+    <section class="player-display">
+      <h2 class="featured-players__title">Top Players</h2>
+
+      <div class="player-display__container"></div>
+    </section>
+
+    <script type="module/Javascript" src="./index.js"></script>
+    <script>
+      async function getUsers() {
+        let url = "http://localhost:3000/players";
+        try {
+          const response = await fetch(url);
+          return await response.json();
+        } catch (error) {
+          console.log(error);
+        }
+      }
+
+      async function renderUsers() {
+        let users = await getUsers();
+
+        let html = "";
+
+        users.forEach((user) => {
+          let htmlSegment = `
+            <player-tile
+            name="${user.playerName}"
+            pos="${user.position}"
+            nat="${user.country}"
+            dob="${user.dayOfBirth}"
+            avatar="${user.playerPic}"
+            social-fb="${user.social.fb}"
+            social-tw="${user.social.tw}"
+            social-li="${user.social.li}"
+            social-pi="${user.social.pi}"
+            social="${user.social}"
+          ></player-tile>
+        `;
+          html += htmlSegment;
+        });
+
+        let container = document.querySelector(".player-display__container");
+        container.innerHTML = html;
+      }
+      renderUsers();
+    </script>
+    <footer-component></footer-component>
+  </body>
+</html>
